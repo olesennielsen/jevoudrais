@@ -1,0 +1,18 @@
+.jevoudrais-header {
+	width:35%;
+	margin-left:auto;
+	margin-right:auto;
+	text-align:center;
+}
+
+.jevoudrais-header h1{ 
+	font-size:700%;
+	color:#989898;
+}
+
+
+.jevoudrais-login {
+	width:15%;
+	margin-left:auto;
+	margin-right:auto;	
+}
