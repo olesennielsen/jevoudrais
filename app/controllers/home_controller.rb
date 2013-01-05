@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
   def index
-    @users = User.all
+    @gifts = current_user.gifts.order(:name)
   end
 end

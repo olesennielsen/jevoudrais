@@ -11,28 +11,17 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105075724) do
+ActiveRecord::Schema.define(:version => 20130105172645) do
 
-  create_table "authentications", :force => true do |t|
-    t.string   "provider"
-    t.string   "uid"
-    t.string   "token"
+  create_table "gifts", :force => true do |t|
+    t.string   "name"
     t.integer  "user_id"
+    t.integer  "giver_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
-  add_index "authentications", ["user_id"], :name => "index_authentications_on_user_id"
-
-  create_table "gifts", :force => true do |t|
-    t.string   "name"
-    t.integer  "receiver_id"
-    t.integer  "giver_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-  end
-
-  add_index "gifts", ["receiver_id"], :name => "index_gifts_on_receiver_id"
+  add_index "gifts", ["user_id"], :name => "index_gifts_on_user_id"
 
   create_table "roles", :force => true do |t|
     t.string   "name"
@@ -60,7 +49,9 @@ ActiveRecord::Schema.define(:version => 20130105075724) do
     t.datetime "updated_at",                             :null => false
     t.string   "name"
     t.date     "birthday"
-    t.text     "friends"
+    t.string   "provider"
+    t.string   "uid"
+    t.string   "token"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
