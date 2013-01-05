@@ -11,6 +11,7 @@ class User < ActiveRecord::Base
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :friends, :birthday
   
   has_many :gifts, :dependent => :destroy
+  has_many :authentications, :dependent => :destroy
   
   
   
@@ -18,7 +19,7 @@ class User < ActiveRecord::Base
   def apply_facebook_omniauth(omniauth)
     self.email = omniauth['info']['email'] if email.blank?
     self.name = omniauth['info']['name'] if name.blank?
-    self.birthday = omniauth['extra']['raw_info']['birthday'] if brithday.blank?
+    self.birthday = omniauth['extra']['raw_info']['birthday'] if birthday.blank?
     self.add_role :our_most_prized_user
     authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'], :token => omniauth['credentials']['token'])
   end

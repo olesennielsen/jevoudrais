@@ -15,13 +15,16 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     else # if it does not exist the user is created by calling the apply_omniauth method    
       user = User.new
       user.apply_facebook_omniauth(omniauth)
+      puts user.name
+      puts user.email
+      puts user.birthday
       if user.save
         flash[:notice] = "Signed in successfully."
         sign_in_and_redirect(:user, user)
         return
       else
         session[:omniauth] = omniauth.except('extra')
-        redirect_to sign_up_path, alert: "We are sorry, something went wrong, please try signing up again."
+        redirect_to root_path, alert: "We are sorry, something went wrong, please try signing up again."
         return
       end
     end
