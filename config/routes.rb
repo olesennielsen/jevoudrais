@@ -1,4 +1,6 @@
 Jevoudrais::Application.routes.draw do
+  resources :gifts
+
   authenticated :user do
     root :to => 'home#index'
   end  
