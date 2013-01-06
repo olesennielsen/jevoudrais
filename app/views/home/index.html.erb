@@ -11,13 +11,19 @@
 		<table class="table">
 			<tbody id="gifts">
 				<% @gifts.each do |gift| %>
-					<tr>
-						<td>gift.name</td>
+					<tr id="<%= gift.id %>">
+						<td><%= gift.name %></td>
 					</tr>
 				<% end %>
 			</tbody>
 		</table>
-					
+		<div class="input-append">
+		<%= form_for Gift.new, :remote => true do |f| %>
+			<%= f.text_field :name %>
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<%= f.submit "Add gift", :class => "btn" %>		
+		<% end %>	
+		</div>		
 	</div>
 	
 	<div class="span6 jevoudrais-table-header">
@@ -26,6 +32,6 @@
 			<tbody>
 				
 			</tbody>			
-		</table>			
+		</table>
 	</div>	
 </div>

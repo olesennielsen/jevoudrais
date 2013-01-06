@@ -40,12 +40,13 @@ class GiftsController < ApplicationController
   # POST /gifts
   # POST /gifts.json
   def create
-    @gift = Gift.new(params[:gift])
+    @gift = Gift.create!(params[:gift])
 
     respond_to do |format|
       if @gift.save
         format.html { redirect_to @gift, notice: 'Gift was successfully created.' }
         format.json { render json: @gift, status: :created, location: @gift }
+        format.js
       else
         format.html { render action: "new" }
         format.json { render json: @gift.errors, status: :unprocessable_entity }
