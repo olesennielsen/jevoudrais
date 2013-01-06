@@ -16,6 +16,7 @@ group :production do
   gem 'pg'
 end
 
+gem 'fb_graph'
 gem 'turbolinks'
 gem 'jquery-rails'
 gem "thin", ">= 1.5.0"
