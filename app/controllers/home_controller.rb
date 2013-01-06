@@ -7,13 +7,6 @@ class HomeController < ApplicationController
     user = FbGraph::User.me(token)
     @friends = user.friends
     
-    @emails = []
-    
-    @friends.each do |f|
-      friend = FbGraph::User.fetch(f.identifier, :access_token => token)
-      @emails.push(friend)
-    end
-    
     # @friends.collect { |friend| friend.email }  
     
   end

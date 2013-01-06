@@ -30,9 +30,9 @@
 		<h2>Friends</h2>
 		<table class="table">
 			<tbody>
-				<% @emails.each do |friend| %>
+				<% @friends.each do |friend| %>
 					<tr>
-						<td><%= friend %></td>
+						<td><%= friend.identifier %></td>
 					</tr>
 				<% end %>
 			</tbody>			
