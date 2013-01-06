@@ -2,8 +2,8 @@ class GiftsController < ApplicationController
   # GET /gifts
   # GET /gifts.json
   def index
-    @gifts = Gift.all
-
+    @gifts = Gift.where(:user_id => params[:user])
+    @user = User.find(params[:user])
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @gifts }

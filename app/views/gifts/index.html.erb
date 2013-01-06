@@ -1,27 +1,14 @@
-<h1>Listing gifts</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Receiver</th>
-    <th>Giver</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<div class="jevoudrais-table-header">
+<h2>Gifts for <%= @user.name %></h2>
+<br />
+</div>
+<table class="table">
+<tbody>
 <% @gifts.each do |gift| %>
   <tr>
     <td><%= gift.name %></td>
-    <td><%= gift.receiver %></td>
-    <td><%= gift.giver %></td>
     <td><%= link_to 'Show', gift %></td>
-    <td><%= link_to 'Edit', edit_gift_path(gift) %></td>
-    <td><%= link_to 'Destroy', gift, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+</tbody>
 </table>
-
-<br />
-
-<%= link_to 'New Gift', new_gift_path %>

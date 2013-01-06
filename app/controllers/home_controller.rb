@@ -7,7 +7,9 @@ class HomeController < ApplicationController
     user = FbGraph::User.me(token)
     @friends = user.friends
     
-    # @friends.collect { |friend| friend.email }  
+    @friends.collect!{ |friend| friend.identifier }
+    
+    @users = User.where(:uid => @friends) 
     
   end
   
