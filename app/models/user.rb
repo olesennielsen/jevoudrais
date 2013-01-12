@@ -26,9 +26,11 @@ class User < ActiveRecord::Base
                            image_link:auth.info.image
                            )
       user.add_role :our_most_prized_user
+      
+      # Add birthday to users events
       Event.create(:name => "Birthday", :event_date => Date.strptime(auth.extra.raw_info.birthday,'%m/%d/%Y'), :recurring => true, :user_id => user.id)
       
-      # Take care of not insulting somebody by automatically detection if its Hanukka or Ramadan, but for 
+      # Take care of not insulting somebody by automatically detection if its Hanukka or Ramadan/eid, but for 
       # now christmas will do
       Event.create(:name => "Christmas", :event_date => Event.christmas_date(auth["info"]["location"]), :recurring => true, :user_id => user.id)      
     end

@@ -27,11 +27,12 @@
 		<h2>Friends</h2>
 		<table class="table">
 			<tbody class="vert-align">
-				<% @users.each do |user| %>
+				<% @events.each do |event| %>
 					<tr>
-						<td><%= image_tag(user.image_link, :alt => user.name) %>
-						<td><%= link_to user.name, gifts_path(:user => user.id) %></td>
-						<td><%= user.birthday %></td>
+						<td><%= link_to image_tag(event.user.image_link, :alt => event.user.name), gifts_path(:user => event.user.id) %>
+						<td><%= link_to event.user.name, gifts_path(:user => event.user.id) %></td>
+						<td><%= event.name %></td>
+						<td><%= event.event_date.strftime("%B %e") %>
 					</tr>
 				<% end %>
 			</tbody>			

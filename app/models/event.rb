@@ -4,6 +4,6 @@ class Event < ActiveRecord::Base
   attr_accessible :event_date, :name, :recurring, :user_id
   
   def self.christmas_date(location)
-    puts location    
+    return Date.new(2013, 12, 24)    
   end
 end
