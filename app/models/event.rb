@@ -1,3 +1,9 @@
 class Event < ActiveRecord::Base
-  attr_accessible :event_date, :name, :recurring
+  belongs_to :user
+  
+  attr_accessible :event_date, :name, :recurring, :user_id
+  
+  def self.christmas_date(location)
+    puts location    
+  end
 end

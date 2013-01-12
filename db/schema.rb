@@ -17,9 +17,12 @@ ActiveRecord::Schema.define(:version => 20130112095847) do
     t.string   "name"
     t.date     "event_date"
     t.boolean  "recurring"
+    t.integer  "user_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+
+  add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
   create_table "gifts", :force => true do |t|
     t.string   "name"

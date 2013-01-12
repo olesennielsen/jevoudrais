@@ -4,8 +4,10 @@ class CreateEvents < ActiveRecord::Migration
       t.string :name
       t.date :event_date
       t.boolean :recurring
+      t.references :user
 
       t.timestamps
     end
+    add_index :events, :user_id
   end
 end
