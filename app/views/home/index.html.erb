@@ -26,7 +26,7 @@
 	<div class="span5 offset2 jevoudrais-table-header">
 		<h2>Friends</h2>
 		<table class="table">
-			<tbody>
+			<tbody class="vert-align">
 				<% @users.each do |user| %>
 					<tr>
 						<td><%= image_tag(user.image_link, :alt => user.name) %>
