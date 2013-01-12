@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130105172645) do
+ActiveRecord::Schema.define(:version => 20130112093636) do
 
   create_table "gifts", :force => true do |t|
     t.string   "name"
@@ -52,6 +52,7 @@ ActiveRecord::Schema.define(:version => 20130105172645) do
     t.string   "provider"
     t.string   "uid"
     t.string   "token"
+    t.string   "image_link"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
