@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :role_ids, :as => :admin
-  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :provider, :uid, :token, :image_link
+  attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :provider, :uid,
+                    :token, :image_link, :cache_time, :cached_friends
   
   has_many :gifts, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
@@ -23,8 +24,9 @@ class User < ActiveRecord::Base
                            token:auth.token,
                            email:auth.info.email,
                            password:Devise.friendly_token[0,20],
-                           image_link:auth.info.image
-                           )
+                           image_link:auth.info.image,
+                           cache_time:DateTime.now - 1.hour
+                        )
       user.add_role :our_most_prized_user
       
       # Add birthday to users events
@@ -34,6 +36,21 @@ class User < ActiveRecord::Base
       # now christmas will do
       Event.create(:name => "Christmas", :event_date => Event.christmas_date(auth["info"]["location"]), :recurring => true, :user_id => user.id)      
     end
+    
+    events = user.events
+    
+    events.each do |event|
+      if event.recurring
+        unless event.event_date > Date.today
+          if Date.new(Date.today.year, event.event_date.month, event.event_date.day) > Date.today
+            event.update_attributes(:event_date => Date.new(Date.today.year, event.event_date.month, event.event_date.day))
+          else
+            event.update_attributes(:event_date => Date.new(Date.today.year + 1, event.event_date.month, event.event_date.day))
+          end
+        end 
+      end
+    end
+    
     user.update_attributes(:token => auth["credentials"]["token"], :image_link => auth["info"]["image"])
     user
   end  

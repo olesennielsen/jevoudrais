@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130112095847) do
+ActiveRecord::Schema.define(:version => 20130113162409) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -63,6 +63,8 @@ ActiveRecord::Schema.define(:version => 20130112095847) do
     t.string   "uid"
     t.string   "token"
     t.string   "image_link"
+    t.datetime "cache_time"
+    t.text     "cached_friends"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
