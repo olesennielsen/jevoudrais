@@ -8,7 +8,15 @@
 <% @gifts.each do |gift| %>
   <tr>
     <td><%= gift.name %></td>
-    <td><%= link_to 'Show', gift %></td>
+		<% unless gift.user == current_user %>
+			<td id="giver-<%= gift.id %>">
+			<% if gift.giver_id %>
+				<%= User.get_giver(gift.giver_id) %>
+			<% else %>
+				<%= button_to "Give", {:action => "give", :id => gift.id }, :remote => true, :id => "give-#{gift.id}", :class => "btn btn-success btn-mini" %>
+			<% end %>
+			</td>
+		<% end %>
   </tr>
 <% end %>
 </tbody>

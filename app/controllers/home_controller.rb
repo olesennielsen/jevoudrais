@@ -3,13 +3,13 @@ class HomeController < ApplicationController
     @gifts = current_user.gifts
     
     # caching for 15 minutes
-    if (current_user.cache_time + 15.minutes) < DateTime.now
+    if ((current_user.cache_time + 15.minutes) < DateTime.now) or current_user.cached_friends.empty?
       token = current_user.token
       user = FbGraph::User.me(token)
       @friends = user.friends
       @friends.collect!{ |friend| friend.identifier }
       @users = User.where(:uid => @friends)
-      current_user.update_attributes(:cached_friends => @users.collect! { |user| user.id }.join(","), :cache_time => DateTime.now)
+      current_user.update_attributes(:cached_friends => @users.collect { |user| user.id }.join(","), :cache_time => DateTime.now)
     else
       users_string = current_user.cached_friends.split(",")
       users_string.collect! { |user| user.to_i }

@@ -53,5 +53,9 @@ class User < ActiveRecord::Base
     
     user.update_attributes(:token => auth["credentials"]["token"], :image_link => auth["info"]["image"])
     user
-  end  
+  end
+  
+  def self.get_giver(id)
+    User.find(id).name
+  end
 end
