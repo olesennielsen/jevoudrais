@@ -1,7 +1,3 @@
-<br />
-<br />
-<br />
-<br />
 <div class="row-fluid">
 	<div class="span5 jevoudrais-table-header">
 		<h2>Wish list</h2>
@@ -16,7 +12,7 @@
 		</table>
 		<div class="input-append">
 		<%= form_for Gift.new, :remote => true do |f| %>
-			<%= f.text_field :name %>
+			<%= f.text_field :name, :class => "input-large" %>
 			<%= f.hidden_field :user_id, :value => current_user.id %>
 			<%= f.submit "Add gift", :class => "btn" %>		
 		<% end %>	
