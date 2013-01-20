@@ -74,7 +74,13 @@ class GiftsController < ApplicationController
   # DELETE /gifts/1.json
   def destroy
     @gift = Gift.find(params[:id])
-    @gift.destroy
+    
+    if @gift.giver_id
+      text = @gift.user.name + " removed a gift you are giving"
+      Notification.create!(:body => text, :user_id => @gift.giver_id)
+    end    
+    
+    @gift.destroy  
 
     respond_to do |format|
       format.html { redirect_to gifts_url }
