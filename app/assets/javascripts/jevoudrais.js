@@ -10,25 +10,25 @@ $(document).ready(function() {
        
 	       function positionFooter() {
        
-	                footerHeight = $footer.height();
-									footerWidth = $footer.width();
-									containerWidth = container.width();
-									
-									leftMargin = ($(window).width() - containerWidth)/2;								
-									
-	                footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
-									footerLeft = leftMargin + containerWidth - footerWidth;
-	               	if ( ($(document.body).height()+footerHeight) < $(window).height()) {
-	                   $footer.css({
-	                        position: "absolute",
-													top: footerTop,
-													left:footerLeft													
-	                   })
-	               	} else {
-	                   $footer.css({
-	                        position: "static"
-	                   })
-	               	}
+          footerHeight = $footer.height();
+					footerWidth = $footer.width();
+					containerWidth = container.width();
+					
+					leftMargin = ($(window).width() - containerWidth)/2;								
+					
+             footerTop = ($(window).scrollTop()+$(window).height()-footerHeight)+"px";
+					footerLeft = leftMargin + containerWidth - footerWidth;
+            	if ( ($(document.body).height()+footerHeight) < $(window).height()) {
+                $footer.css({
+                     position: "absolute",
+									top: footerTop,
+									left:footerLeft													
+                })
+            	} else {
+                $footer.css({
+                     position: "static"
+                })
+            	}
                
 	       }
 
