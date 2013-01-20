@@ -5,6 +5,7 @@ Jevoudrais::Application.routes.draw do
   get 'gift_creator' => 'home#gift_creator'  
   post 'give' => 'gifts#give'
   get '/get_giver/:id' => 'gifts#get_giver'
+  post 'remove_gift' => 'gifts#remove_gift'
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }  
   
   devise_scope :user do
