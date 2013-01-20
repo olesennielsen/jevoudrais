@@ -1,37 +1,35 @@
-<div class="row-fluid">
-	<div class="span5 jevoudrais-table-header">
-		<h2>Wish list</h2>
-		<table class="table">
-			<tbody id="gifts">
-				<% @gifts.each do |gift| %>
-					<tr id="<%= gift.id %>">
-						<td><%= gift.name %></td>
-					</tr>
-				<% end %>
-			</tbody>
-		</table>
-		<div class="input-append">
+<div class="span5 jevoudrais-table-header">
+	<h2>Wish list</h2>
+	<table class="table">
+		<tbody id="gifts">
+			<% @gifts.each do |gift| %>
+			<tr id="<%= gift.id %>">
+				<td><%= gift.name %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<div class="input-append">
 		<%= form_for Gift.new, :remote => true do |f| %>
-			<%= f.text_field :name, :class => "input-large" %>
-			<%= f.hidden_field :user_id, :value => current_user.id %>
-			<%= f.submit "Add gift", :class => "btn" %>		
+		<%= f.text_field :name, :class => "input-large" %>
+		<%= f.hidden_field :user_id, :value => current_user.id %>
+		<%= f.submit "Add gift", :class => "btn" %>		
 		<% end %>	
-		</div>		
-	</div>
-	
-	<div class="span5 offset2 jevoudrais-table-header">
-		<h2>Friends</h2>
-		<table class="table">
-			<tbody class="vert-align">
-				<% @events.each do |event| %>
-					<tr>
-						<td><%= link_to image_tag(event.user.image_link, :alt => event.user.name), gifts_path(:user => event.user.id) %>
-						<td><%= link_to event.user.name, gifts_path(:user => event.user.id) %></td>
-						<td><%= event.name %></td>
-						<td><%= event.event_date.strftime("%B %e") %>
-					</tr>
-				<% end %>
-			</tbody>			
-		</table>
-	</div>	
+	</div>		
 </div>
+
+<div class="span5 offset2 jevoudrais-table-header">
+	<h2>Friends</h2>
+	<table class="table">
+		<tbody class="vert-align">
+			<% @events.each do |event| %>
+			<tr>
+				<td><%= link_to image_tag(event.user.image_link, :alt => event.user.name), gifts_path(:user => event.user.id) %>
+					<td><%= link_to event.user.name, gifts_path(:user => event.user.id) %></td>
+					<td><%= event.name %></td>
+					<td><%= event.event_date.strftime("%B %e") %>
+					</tr>
+					<% end %>
+				</tbody>			
+			</table>
+		</div>	
