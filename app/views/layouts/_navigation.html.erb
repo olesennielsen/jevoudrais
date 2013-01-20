@@ -1,9 +1,13 @@
 <p class="pull-right">
   <% if user_signed_in? %>
 		<% unless (params[:controller] == 'home' and params[:action] == 'index' ) %>
-			<%= link_to 'Back', root_path %> | 
+			<%= link_to 'Back', root_path, :'data-no-turbolink' => true %> | 
 		<% end %>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
+	<% else %>
+		<% unless (params[:controller] == 'home' and params[:action] == 'new' ) %>
+			<%= link_to 'Back', root_path, :'data-no-turbolink' => true %> 
+		<% end %>
 	<% end %>
 	<br />
 </p>
