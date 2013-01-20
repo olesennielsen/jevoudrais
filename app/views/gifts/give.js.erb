@@ -1,2 +1,15 @@
 $("#give-" + <%= @gift.id %>).hide();
-$("#giver-" + <%= @gift.id %>).html(<%= @giver %>);
+
+var giver;
+$.ajax({
+	type: 'GET',
+	url: '/get_giver/' + <%= @gift.giver_id %>,
+	success: function(data)
+	{
+		var name = '';
+		$.each(data, function(i, item) {
+			name += item;
+		});
+		$('#giver-' + <%= @gift.id %>).html(name);
+	}
+});

@@ -1,5 +1,8 @@
 <p class="pull-right">
   <% if user_signed_in? %>
+		<% unless (params[:controller] == 'home' and params[:action] == 'index' ) %>
+			<%= link_to 'Back', root_path %> | 
+		<% end %>
     <%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %>
 	<% end %>
 </p>

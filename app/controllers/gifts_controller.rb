@@ -85,9 +85,20 @@ class GiftsController < ApplicationController
   def give
     @gift = Gift.find(params[:id])
     @gift.update_attributes(:giver_id => current_user.id)
-    @giver = User.find(current_user.id).name
+    @giver = User.get_giver(@gift.giver_id)
+
     respond_to do |format|
       format.js
+    end
+  end
+  
+  def get_giver
+    @users = User.find(params[:id])
+    
+    @name = { :name => @users.name }
+    
+    respond_to do |format|
+      format.json { render json: @name }
     end
   end
 end
