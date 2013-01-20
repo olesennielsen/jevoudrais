@@ -5,9 +5,11 @@
 			<% @gifts.each do |gift| %>
 			<tr id="<%= gift.id %>">
 				<td><%= gift.name %></td>
-				<td><%= link_to gift, :remote => true, :method => :delete, :id => "delete-gift" do %>
-					<i class="icon-remove"></i>
-				<% end %></td>
+				<% if gift.user == current_user %>
+					<td><%= link_to gift, :remote => true, :method => :delete, :id => "delete-gift", :title => "Remove gift" do %>
+						<i class="icon-remove"></i>
+					<% end %></td>
+				<% end %>
 			</tr>
 			<% end %>
 		</tbody>
