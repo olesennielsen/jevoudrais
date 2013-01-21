@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :gifts, :dependent => :destroy
   has_many :authentications, :dependent => :destroy
   has_many :events, :dependent => :destroy
+  has_many :notifications, :dependent => :destroy
   
   def self.find_for_facebook_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
@@ -58,4 +59,8 @@ class User < ActiveRecord::Base
   def self.get_giver(id)
     User.find(id).name
   end
+  
+  def get_notifications
+    return Notification.where(:user_id => self.id)
+  end  
 end

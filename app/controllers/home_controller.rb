@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   def index
     @gifts = current_user.gifts
-    
+    @notifications = current_user.notifications
     # caching for 15 minutes
     if ((current_user.cache_time + 15.minutes) < DateTime.now) or current_user.cached_friends.empty?
       token = current_user.token
