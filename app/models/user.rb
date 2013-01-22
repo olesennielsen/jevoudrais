@@ -38,8 +38,10 @@ class User < ActiveRecord::Base
       Event.create(:name => "Christmas", :event_date => Event.christmas_date(auth["info"]["location"]), :recurring => true, :user_id => user.id)      
     end
     
-    events = user.events
+    # Destroys all seen notifications to clean up
+    Notification.destroy_all(:user_id => user.id, :seen => true)
     
+    events = user.events    
     events.each do |event|
       if event.recurring
         unless event.event_date > Date.today

@@ -1,4 +1,7 @@
 $(document).ready(function() {
+	
+	$('.dropdown-toggle').dropdown();
+	
 	var footerHeight = 0,
 	footerTop = 0,
 	footer = $("#footer"),
@@ -26,4 +29,22 @@ $(document).ready(function() {
 	$(window)
 	.scroll(positionFooter)
 	.resize(positionFooter)
+	
+	
+	$('#dLabel').click(function() {
+	  $('#dropdown-menu li').each(function() {
+		  $.ajax({
+			  url: '/notifications/' + this.id,
+			  type: 'PUT',
+			  data: "seen=true",
+			  success: function(data) {
+					setTimeout(
+					  function() 
+					  {
+					    $('#dropdown-div').hide();
+					  }, 5000);			    
+			  }
+			});  
+		});
+	});
 });

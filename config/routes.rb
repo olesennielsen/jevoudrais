@@ -6,6 +6,10 @@ Jevoudrais::Application.routes.draw do
   post 'give' => 'gifts#give'
   get '/get_giver/:id' => 'gifts#get_giver'
   post 'remove_gift' => 'gifts#remove_gift'
+  put '/notifications/:id' => 'notifications#update'
+  
+  
+  
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }  
   
   devise_scope :user do

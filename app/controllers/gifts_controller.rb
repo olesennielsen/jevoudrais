@@ -76,7 +76,7 @@ class GiftsController < ApplicationController
     @gift = Gift.find(params[:id])
     
     if @gift.giver_id
-      text = @gift.user.name + " removed a gift you are giving"
+      text = @gift.user.name + " removed " + @gift.name + " that you are giving"
       Notification.create!(:body => text, :user_id => @gift.giver_id)
     end    
     

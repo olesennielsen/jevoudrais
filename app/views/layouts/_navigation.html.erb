@@ -1,20 +1,21 @@
 <% if user_signed_in? %>
   <p class="pull-right"><%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></p>
-	<% unless (params[:controller] == 'home' and params[:action] == 'index' ) %>
-		<p class="pull-right"><%= link_to 'Back', root_path, :'data-no-turbolink' => true %> | </p>
-	<% end %>
-	<% unless @notifications.empty? %>
-	<div class="dropdown">
-	  <a class="dropdown-toggle pull-right" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-	    Notifications
-	    <b class="caret"></b>&nbsp;
-	  </a>
-	  <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel">
-			<% @notifications.each do |notification| %>
-				<li>&nbsp;&nbsp;<%= notification.body %>&nbsp;&nbsp;</li>
-			<% end %>
-	  </ul>
-	</div>
+	<% if (params[:controller] == 'home' and params[:action] == 'index' ) %>
+		<% unless @notifications.empty? %>
+		<div class="dropdown" id="dropdown-div">
+		  <a class="dropdown-toggle pull-right" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
+		    Notifications
+		    <b class="caret"></b>&nbsp;
+		  </a>
+		  <ul class="dropdown-menu pull-right" role="menu" aria-labelledby="dLabel" id="dropdown-menu">
+				<% @notifications.each do |notification| %>
+					<li id="<%= notification.id %>">&nbsp;&nbsp;&nbsp;&nbsp;<%= notification.body %>&nbsp;&nbsp;&nbsp;&nbsp;</li>
+				<% end %>
+		  </ul>
+		</div>
+		<% end %>
+	<% else %>
+		<p class="pull-right"><%= link_to 'Back', root_path, :'data-no-turbolink' => true %>&nbsp;&nbsp;</p>
 	<% end %>
 <% else %>
 	<% unless (params[:controller] == 'home' and params[:action] == 'new' ) %>
