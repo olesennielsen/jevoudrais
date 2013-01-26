@@ -20,7 +20,27 @@
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<%= f.submit "Add gift", :class => "btn" %>		
 		<% end %>	
-	</div>		
+	</div>
+	<br /><br />
+	<h2>Your events</h2>
+	<table class="table">
+		<tbody id="events">
+			<% @own_events.each do |event| %>
+			<tr id="<%= event.id %>">
+				<td><%= event.name %></td>
+				<td><%= event.event_date %></td>
+				<td><%= link_to event, :remote => true, :method => :delete, :id => "delete-event", :title => "Remove event	" do %>
+					<i class="icon-remove"></i>
+				<% end %></td>
+			</tr>
+			<% end %>
+		</tbody>
+	</table>
+	<%= link_to 'New event', events_new_path, :class => 'btn pull-right' %>
+
+	
+	
+			
 </div>
 
 <div class="span5 offset2 jevoudrais-table-header">

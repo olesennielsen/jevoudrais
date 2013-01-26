@@ -14,7 +14,9 @@ class HomeController < ApplicationController
       users_string = current_user.cached_friends.split(",")
       users_string.collect! { |user| user.to_i }
       @users = User.where(:id => users_string)
-    end   
+    end
+    
+    @own_events = current_user.events
     
     @events = []
     

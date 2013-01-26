@@ -1,0 +1,11 @@
+<div class="jevoudrais-table-header">
+<h2>New event</h2>
+</div>
+<br />
+<%= simple_form_for(@event, :html => { :class => 'form-vertical', :id => 'events-form' } ) do |f| %>
+  <%= f.input :name, :autofocus => true %>
+	<%= f.input :event_date, :as => :datepicker, :input_html => { :id => 'datepicker' } %>
+	<%= f.input :recurring %>
+	<%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %><br />
+  <%= f.button :submit, 'Sign up', :class => 'btn' %>
+<% end %>
