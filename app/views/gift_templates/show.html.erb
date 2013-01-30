@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @gift_template.name %>
+</p>
+
+<p>
+  <b>Image link:</b>
+  <%= @gift_template.image_link %>
+</p>
+
+<p>
+  <b>Product link:</b>
+  <%= @gift_template.product_link %>
+</p>
+
+<p>
+  <b>User:</b>
+  <%= @gift_template.user %>
+</p>
+
+
+<%= link_to 'Edit', edit_gift_template_path(@gift_template) %> |
+<%= link_to 'Back', gift_templates_path %>

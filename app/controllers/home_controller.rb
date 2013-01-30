@@ -3,7 +3,7 @@ class HomeController < ApplicationController
     @gifts = current_user.gifts
     @notifications = current_user.notifications.where(:seen => false)
     # caching for 15 minutes
-    if ((current_user.cache_time + 15.minutes) < DateTime.now) or current_user.cached_friends.empty?
+    if ((current_user.cache_time + 30.minutes) < DateTime.now) or current_user.cached_friends.empty?
       token = current_user.token
       user = FbGraph::User.me(token)
       @friends = user.friends
@@ -34,4 +34,17 @@ class HomeController < ApplicationController
   def new
     
   end
+  
+  def search
+    string = params[:term]    
+    @templates = GiftTemplate.where('name LIKE ?', "%#{string}%")
+    
+    @results = @templates.collect do |template|
+      { id: template.id, value: template.name, title: template.image_link }  
+    end
+    
+    respond_to do |format|
+      format.json { render json: @results }
+    end
+  end  
 end

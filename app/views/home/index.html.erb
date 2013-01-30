@@ -15,12 +15,20 @@
 		</tbody>
 	</table>
 	<div class="input-append">
-		<%= form_for Gift.new, :remote => true do |f| %>
-		<%= f.text_field :name, :class => "input-large" %>
+		<%= form_for Gift.new, :html => {:id => 'gift-form'},:remote => true do |f| %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
-		<%= f.submit "Add gift", :class => "btn" %>		
+		<%= f.hidden_field :gift_template_id, :id => 'hidden-gift-template' %>
+		<div class="ui-widget">
+		<%= f.text_field :name, :id => "gift-name", :class => "input-large" %>		
+		<%= f.submit "Add gift", :class => "btn" %>
+		</div>	
 		<% end %>	
 	</div>
+	
+	<div id="results">
+			
+	</div>	
+	
 	<br /><br />
 	<h2>Your events</h2>
 	<table class="table">
@@ -36,11 +44,7 @@
 			<% end %>
 		</tbody>
 	</table>
-	<%= link_to 'New event', events_new_path, :class => 'btn pull-right' %>
-
-	
-	
-			
+	<%= link_to 'New event', new_event_path, :class => 'btn pull-right' %>			
 </div>
 
 <div class="span5 offset2 jevoudrais-table-header">

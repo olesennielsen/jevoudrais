@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130120173957) do
+ActiveRecord::Schema.define(:version => 20130130150400) do
 
   create_table "events", :force => true do |t|
     t.string   "name"
@@ -24,12 +24,24 @@ ActiveRecord::Schema.define(:version => 20130120173957) do
 
   add_index "events", ["user_id"], :name => "index_events_on_user_id"
 
+  create_table "gift_templates", :force => true do |t|
+    t.string   "name"
+    t.string   "image_link"
+    t.string   "product_link"
+    t.integer  "user_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "gift_templates", ["user_id"], :name => "index_gift_templates_on_user_id"
+
   create_table "gifts", :force => true do |t|
     t.string   "name"
     t.integer  "user_id"
     t.integer  "giver_id"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+    t.integer  "gift_template_id"
   end
 
   add_index "gifts", ["user_id"], :name => "index_gifts_on_user_id"

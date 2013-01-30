@@ -1,4 +1,5 @@
 Jevoudrais::Application.routes.draw do
+  resources :gift_templates
   resources :gifts
   resources :events
   
@@ -7,7 +8,8 @@ Jevoudrais::Application.routes.draw do
   post 'give' => 'gifts#give'
   get '/get_giver/:id' => 'gifts#get_giver'
   post 'remove_gift' => 'gifts#remove_gift'
-  put '/notifications/:id' => 'notifications#update' 
+  put '/notifications/:id' => 'notifications#update'
+  get '/search' => 'home#search' 
   
   devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }  
   
