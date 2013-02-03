@@ -62,6 +62,10 @@ class User < ActiveRecord::Base
     User.find(id).name
   end
   
+  def self.get_user(id)
+    User.find(id).name
+  end
+  
   def get_notifications
     return Notification.where(:user_id => self.id)
   end  

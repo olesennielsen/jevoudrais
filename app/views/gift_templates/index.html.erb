@@ -1,6 +1,6 @@
-<h1>Listing gift_templates</h1>
-
-<table>
+<h1>Gift templates</h1>
+<br />
+<table class="table">
   <tr>
     <th>Name</th>
     <th>Image link</th>
@@ -13,17 +13,13 @@
 
 <% @gift_templates.each do |gift_template| %>
   <tr>
-    <td><%= gift_template.name %></td>
+    <td><%= link_to gift_template.name, gift_template %></td>
     <td><%= gift_template.image_link %></td>
     <td><%= gift_template.product_link %></td>
-    <td><%= gift_template.user %></td>
-    <td><%= link_to 'Show', gift_template %></td>
-    <td><%= link_to 'Edit', edit_gift_template_path(gift_template) %></td>
-    <td><%= link_to 'Destroy', gift_template, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= gift_template.user.name %></td>
+    <td><%= link_to 'Edit', edit_gift_template_path(gift_template), :class => "btn btn-primary btn-mini" %></td>
+    <td><%= link_to 'Remove', gift_template, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-mini" %></td>
   </tr>
 <% end %>
 </table>
 
-<br />
-
-<%= link_to 'New Gift template', new_gift_template_path %>
