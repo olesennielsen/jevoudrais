@@ -40,7 +40,28 @@
 			<% end %>
 		</tbody>
 	</table>
-	<%= link_to 'New event', new_event_path, :class => 'btn pull-right' %>			
+	
+	<a href="#myModal" role="button" class="btn pull-right" data-toggle="modal">New event</a>
+	
+	<!-- Modal -->
+	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	  <div class="jevoudrais-table-header modal-header">
+	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+	    <h2 id="myModalLabel">New event</h2>
+	  </div>
+	  <div class="modal-body">
+	    <%= simple_form_for(Event.new, :html => { :class => 'form-vertical', :id => 'events-form' } ) do |f| %>
+			  <%= f.input :name, :autofocus => true %>
+				<%= f.input :event_date, :as => :datepicker, :input_html => { :id => 'datepicker' } %>
+				<%= f.input :recurring %>
+				<%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %><br />			
+	  </div>
+	  <div class="modal-footer">
+	    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+	    <%= f.button :submit, 'Save event', :class => 'btn btn-primary' %>
+	  </div>
+		<% end %>
+	</div>		
 </div>
 
 <div class="span5 offset2 jevoudrais-table-header">
