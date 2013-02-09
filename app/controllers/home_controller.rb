@@ -2,7 +2,7 @@ class HomeController < ApplicationController
   def index
     @gifts = current_user.gifts
     @notifications = current_user.notifications.where(:seen => false)
-    # caching for 15 minutes
+    # caching for 30 minutes
     if ((current_user.cache_time + 30.minutes) < DateTime.now) or current_user.cached_friends.empty?
       token = current_user.token
       user = FbGraph::User.me(token)
@@ -17,7 +17,7 @@ class HomeController < ApplicationController
     end
     
     @own_events = current_user.events
-    
+        
     @events = []
     
     @users.each do |user|
@@ -27,7 +27,7 @@ class HomeController < ApplicationController
         @events.push(event)
       end
     end
-  
+      
     @events.sort_by! { |e| e.event_date }    
   end
   

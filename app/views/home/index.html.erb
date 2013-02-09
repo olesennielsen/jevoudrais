@@ -23,10 +23,6 @@
 		<%= f.submit "Add gift", :class => "btn" %>
 		</div>	
 		<% end %>	
-	</div>
-	
-	<div id="results">
-			
 	</div>	
 	
 	<br /><br />
@@ -53,12 +49,12 @@
 		<tbody class="vert-align">
 			<% @events.each do |event| %>
 			<tr>
-				<td><%= link_to image_tag(event.user.image_link, :alt => event.user.name), gifts_path(:user => event.user.id) %>
-					<td><%= link_to event.user.name, gifts_path(:user => event.user.id) %></td>
-					<td><%= event.name %></td>
-					<td><%= event.event_date.strftime("%B %e") %>
-					</tr>
-					<% end %>
-				</tbody>			
-			</table>
-		</div>	
+				<td><%= link_to image_tag(event.user.image_link, :alt => event.user.name), gifts_path(:user => event.user.id) %></td>
+				<td><%= link_to event.user.name, gifts_path(:user => event.user.id) %></td>
+				<td><%= event.name %></td>
+				<td><%= event.event_date.strftime("%B %e") %></td>
+			</tr>
+			<% end %>
+		</tbody>			
+	</table>
+</div>

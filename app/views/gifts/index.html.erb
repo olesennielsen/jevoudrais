@@ -3,17 +3,26 @@
 <h2>Gifts for <%= @user.name %></h2>
 <br />
 </div>
-<table class="table">
+<table class="table table-condensed">
 <tbody>
 <% @gifts.each do |gift| %>
   <tr>
     <td><%= gift.name %></td>
+		<% if gift.gift_template_id %>
+			<% gift_template = GiftTemplate.get_gift_template(gift.gift_template_id) %>
+			<td><%= image_tag(gift_template.image_link, :alt => gift.name, :class => "gift-template-image") %></td>
+			<td><%= link_to "Product", gift_template.product_link %></td>
+		<% else %>
+			<td colspan="2"></td>
+		<% end %>
+
+
 		<% unless gift.user == current_user %>
 			<td id="giver-<%= gift.id %>">
 			<% if gift.giver_id %>
 				<%= User.get_giver(gift.giver_id) %>
 			<% else %>
-				<%= button_to "Give", {:action => "give", :id => gift.id }, :remote => true, :id => "give-#{gift.id}", :class => "btn btn-success btn-mini" %>
+				<%= button_to "Give", {:action => "give", :id => gift.id }, :remote => true, :id => "give-#{gift.id}", :class => "btn btn-primary btn-mini" %>
 			<% end %>
 			</td>
 		<% end %>
