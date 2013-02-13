@@ -50,15 +50,28 @@
 	    <h2 id="myModalLabel">New event</h2>
 	  </div>
 	  <div class="modal-body">
-	    <%= simple_form_for(Event.new, :html => { :class => 'form-vertical', :id => 'events-form' } ) do |f| %>
-			  <%= f.input :name, :autofocus => true %>
-				<%= f.input :event_date, :as => :datepicker, :input_html => { :id => 'datepicker' } %>
-				<%= f.input :recurring %>
-				<%= f.input :user_id, :as => :hidden, :input_html => { :value => current_user.id } %><br />			
+	    <%= form_for(Event.new, :html => { :class => 'form-vertical', :id => 'events-form' } ) do |f| %>
+				<div class="field">
+					<p>Name of event:</p>
+			  	<%= f.text_field :name, :autofocus => true %>
+				</div>
+				<br />
+				<div class="field">
+					<p>Date of event:</p>
+			  	<%= f.text_field :event_date,  :id => 'datepicker' %>
+				</div>
+				<br />
+				<div class="field">
+					<p>Is the event recurring?&nbsp;</p>
+					<%= f.check_box :recurring %>
+				</div>
+				
+				
+				<%= f.hidden_field :user_id, :value => current_user.id %><br />			
 	  </div>
 	  <div class="modal-footer">
 	    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-	    <%= f.button :submit, 'Save event', :class => 'btn btn-primary' %>
+	    <%= f.submit 'Save event', :class => 'btn btn-primary' %>
 	  </div>
 		<% end %>
 	</div>		
