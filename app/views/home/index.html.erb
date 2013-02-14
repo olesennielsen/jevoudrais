@@ -41,10 +41,10 @@
 		</tbody>
 	</table>
 	
-	<a href="#myModal" role="button" class="btn pull-right" data-toggle="modal">New event</a>
+	<a href="#eventModal" role="button" class="btn pull-right" data-toggle="modal">New event</a>
 	
 	<!-- Modal -->
-	<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+	<div id="eventModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="jevoudrais-table-header modal-header">
 	    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 	    <h2 id="myModalLabel">New event</h2>
@@ -91,4 +91,20 @@
 			<% end %>
 		</tbody>			
 	</table>
+</div>
+
+
+<div id="notificationModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Notifications</h3>
+  </div>
+  <div class="modal-body">
+    <% @notifications.each do |notification| %>
+			<p><%= notification.body %></p>
+		<% end %>
+  </div>
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
+  </div>
 </div>

@@ -31,21 +31,8 @@ $(document).ready(function() {
 	.resize(positionFooter)
 	
 	
-	$('#dLabel').click(function() {
-	  $('#dropdown-menu li').each(function() {
-		  $.ajax({
-			  url: '/notifications/' + this.id,
-			  type: 'PUT',
-			  data: "seen=true",
-			  success: function(data) {
-					setTimeout(
-					  function() 
-					  {
-					    $('#dropdown-div').hide();
-					  }, 5000);			    
-			  }
-			});  
-		});
+	$('#notificationModal').on('hidden', function () {
+	  console.log('closed');
 	});
 	
 	$('#datepicker').datepicker({format: "dd-mm-yyyy"});
