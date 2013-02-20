@@ -46,11 +46,12 @@ $(document).ready(function() {
 		
 	$('#datepicker').datepicker({format: "dd-mm-yyyy"});
 	
-	$('#submit-link').click(function() {
-		console.log($('#gift-name').val());
+	$('#submit-button').click(function() {
+		event.preventDefault();
 		if ($('#gift-name').val() == "") {
 			$("#error-text").html('<p class="text-warning">Please fill in a gift name</p>');			
 		} else {
+			$("#error-text").html('');
 			$("#gift-form").submit();
 		}
 	});

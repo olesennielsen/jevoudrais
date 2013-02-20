@@ -14,17 +14,18 @@
 			<% end %>
 		</tbody>
 	</table>
+	
 	<div class="input-append">
 		<%= form_for Gift.new, :html => {:id => 'gift-form'},:remote => true do |f| %>
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<%= f.hidden_field :gift_template_id, :id => 'hidden-gift-template' %>
-		<div class="ui-widget">
-			<div id="error-text"></div>
+		<div class="ui-widget">			
 			<%= f.text_field :name, :id => "gift-name", :class => "input-large" %>	
-			<%= link_to 'Add gift', '', :class => 'btn', :id => 'submit-link' %>
+			<%= f.submit 'Add gift', :class => 'btn', :id => 'submit-button' %>
 		</div>	
-		<% end %>	
-	</div>	
+		<% end %>			
+	</div>
+	<div id="error-text"></div>	
 	
 	<br /><br />
 	<h2>Your events</h2>
