@@ -2,4 +2,7 @@
 $("<%= escape_javascript(render @gift) %>").hide().appendTo("#gifts").fadeIn(1000);
 
 /* Reset the message form */
-$("#new_gift")[0].reset();
+$("#gift-name").val('');	
+
+
+

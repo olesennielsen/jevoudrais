@@ -40,7 +40,7 @@ class GiftsController < ApplicationController
   # POST /gifts
   # POST /gifts.json
   def create
-    @gift = Gift.create!(params[:gift])
+    @gift = Gift.new(params[:gift])
 
     respond_to do |format|
       if @gift.save
@@ -50,6 +50,7 @@ class GiftsController < ApplicationController
       else
         format.html { render action: "new" }
         format.json { render json: @gift.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

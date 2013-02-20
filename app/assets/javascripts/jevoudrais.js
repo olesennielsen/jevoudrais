@@ -32,8 +32,26 @@ $(document).ready(function() {
 	
 	
 	$('#notificationModal').on('hidden', function () {
-	  console.log('closed');
+	  //ajax call to update all notifications and then hide notification link
+		$('#modal-body p').each(function() {
+		 	$.ajax({
+		     url: '/notifications/' + this.id,
+		     type: 'PUT',
+		     data: "seen=true"
+		  });  
+		});
+		
+		$('notifications-link').hide();
 	});
-	
+		
 	$('#datepicker').datepicker({format: "dd-mm-yyyy"});
+	
+	$('#submit-link').click(function() {
+		console.log($('#gift-name').val());
+		if ($('#gift-name').val() == "") {
+			$("#error-text").html('<p class="text-warning">Please fill in a gift name</p>');			
+		} else {
+			$("#gift-form").submit();
+		}
+	});
 });

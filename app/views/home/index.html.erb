@@ -1,5 +1,5 @@
 <div class="span5 jevoudrais-table-header">
-	<h2>Wish list</h2>
+	<h2>Your wish list</h2>
 	<table class="table">
 		<tbody id="gifts">
 			<% @gifts.each do |gift| %>
@@ -19,8 +19,9 @@
 		<%= f.hidden_field :user_id, :value => current_user.id %>
 		<%= f.hidden_field :gift_template_id, :id => 'hidden-gift-template' %>
 		<div class="ui-widget">
-		<%= f.text_field :name, :id => "gift-name", :class => "input-large" %>		
-		<%= f.submit "Add gift", :class => "btn" %>
+			<div id="error-text"></div>
+			<%= f.text_field :name, :id => "gift-name", :class => "input-large" %>	
+			<%= link_to 'Add gift', '', :class => 'btn', :id => 'submit-link' %>
 		</div>	
 		<% end %>	
 	</div>	
@@ -99,12 +100,9 @@
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
     <h3 id="myModalLabel">Notifications</h3>
   </div>
-  <div class="modal-body">
+  <div class="modal-body" id="modal-body">
     <% @notifications.each do |notification| %>
-			<p><%= notification.body %></p>
+			<p id="<%= notification.id %>"><%= notification.body %></p>
 		<% end %>
-  </div>
-  <div class="modal-footer">
-    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
   </div>
 </div>
