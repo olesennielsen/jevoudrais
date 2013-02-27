@@ -1,4 +1,6 @@
 Jevoudrais::Application.routes.draw do
+  devise_for :gift_creators
+
   resources :gift_templates
   resources :gifts
   resources :events
