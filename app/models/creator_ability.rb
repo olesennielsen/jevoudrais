@@ -1,9 +1,11 @@
-class Ability
+class CreatorAbility
   include CanCan::Ability
 
-  def initialize(user)
+  def initialize(creator)
     user ||= User.new # guest user (not logged in)
-    if user.has_role? :our_most_prized_user
+    if user.has_role? :admin
+      can :manage, :all
+    elsif creator.has_role? :gift_creator
       can :manage, :all
     end
     # Define abilities for the passed in user here. For example:
