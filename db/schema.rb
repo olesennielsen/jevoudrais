@@ -48,12 +48,12 @@ ActiveRecord::Schema.define(:version => 20130227092017) do
     t.string   "name"
     t.string   "image_link"
     t.string   "product_link"
-    t.integer  "user_id"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "gift_creator_id"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "gift_templates", ["user_id"], :name => "index_gift_templates_on_user_id"
+  add_index "gift_templates", ["gift_creator_id"], :name => "index_gift_templates_on_gift_creator_id"
 
   create_table "gifts", :force => true do |t|
     t.string   "name"

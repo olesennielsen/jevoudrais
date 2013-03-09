@@ -4,10 +4,10 @@ class CreateGiftTemplates < ActiveRecord::Migration
       t.string :name
       t.string :image_link
       t.string :product_link
-      t.references :user
+      t.references :gift_creator
 
       t.timestamps
     end
-    add_index :gift_templates, :user_id
+    add_index :gift_templates, :gift_creator_id
   end
 end

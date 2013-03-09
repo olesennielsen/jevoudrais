@@ -1,12 +1,16 @@
-<h1>Gift templates</h1>
+<div class="jevoudrais-table-header">
+<h2>Your gift templates</h2>
+</div>
 <br />
-<table class="table">
+
+<%= link_to "New template", new_gift_template_path, :class => "btn pull-right" %>
+<br />
+<br />
+<table class="table table-hover">
   <tr>
     <th>Name</th>
     <th>Image link</th>
     <th>Product link</th>
-    <th>User</th>
-    <th></th>
     <th></th>
     <th></th>
   </tr>
@@ -15,9 +19,8 @@
   <tr>
     <td><%= link_to gift_template.name, gift_template %></td>
     <td><%= gift_template.image_link %></td>
-    <td><%= gift_template.product_link %></td>
-    <td><%= gift_template.user.name %></td>
-    <td><%= link_to 'Edit', edit_gift_template_path(gift_template), :class => "btn btn-primary btn-mini" %></td>
+    <td><%= link_to gift_template.product_link, gift_template.product_link %></td>
+    <td><%= link_to 'Edit', edit_gift_template_path(gift_template), :class => "btn btn-mini" %></td>
     <td><%= link_to 'Remove', gift_template, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn btn-danger btn-mini" %></td>
   </tr>
 <% end %>

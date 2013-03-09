@@ -44,7 +44,7 @@ class GiftTemplatesController < ApplicationController
 
     respond_to do |format|
       if @gift_template.save
-        format.html { redirect_to @gift_template, notice: 'Gift template was successfully created.' }
+        format.html { redirect_to gift_templates_path, notice: 'Gift template was successfully created.' }
         format.json { render json: @gift_template, status: :created, location: @gift_template }
       else
         format.html { render action: "new" }
@@ -60,7 +60,7 @@ class GiftTemplatesController < ApplicationController
 
     respond_to do |format|
       if @gift_template.update_attributes(params[:gift_template])
-        format.html { redirect_to @gift_template, notice: 'Gift template was successfully updated.' }
+        format.html { redirect_to gift_templates_path, notice: 'Gift template was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -76,7 +76,7 @@ class GiftTemplatesController < ApplicationController
     @gift_template.destroy
 
     respond_to do |format|
-      format.html { redirect_to gift_templates_url }
+      format.html { redirect_to gift_templates_path }
       format.json { head :no_content }
     end
   end

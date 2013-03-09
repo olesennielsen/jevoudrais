@@ -9,14 +9,12 @@
 	<% end %>
 <% elsif gift_creator_signed_in? %>
 	<p class="pull-right">&nbsp;&nbsp;<%= link_to 'Logout', destroy_gift_creator_session_path, :method=>'delete' %></p>
+	<% unless (params[:controller] == 'gift_templates' and params[:action] == 'index' ) %>
+		<p class="pull-right"><%= link_to 'Back', root_path, :'data-no-turbolink' => true %>&nbsp;&nbsp;</p>
+	<% end %>
 <% else %>
 	<% unless (params[:controller] == 'home' and params[:action] == 'new' ) %>
 		<p class="pull-right"><%= link_to 'Back', root_path, :'data-no-turbolink' => true %></p>
 	<% end %>
 <% end %>
-
-
-
-
-
 <br />

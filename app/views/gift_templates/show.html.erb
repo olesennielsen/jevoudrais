@@ -1,25 +1,19 @@
-<p id="notice"><%= notice %></p>
+<div class="jevoudrais-table-header">
+	<h2><%= @gift_template.name %></h2>
+</div>
+<br />
+<div class="row-fluid">
+	<div class="span4">
+		<p>
+		  <%= link_to @gift_template.product_link, @gift_template.product_link %>
+		</p>
+		<br />
+		<br />
+		<%= link_to 'Edit', edit_gift_template_path(@gift_template), :class => "btn" %>
+	</div>
+	
+	<div class="span8">
+		<%= image_tag @gift_template.image_link, :alt => @gift_template.name %>
+	</div>
 
-<p>
-  <b>Name:</b>
-  <%= @gift_template.name %>
-</p>
-
-<p>
-  <b>Image link:</b>
-  <%= @gift_template.image_link %>
-</p>
-
-<p>
-  <b>Product link:</b>
-  <%= @gift_template.product_link %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @gift_template.user %>
-</p>
-
-
-<%= link_to 'Edit', edit_gift_template_path(@gift_template) %> |
-<%= link_to 'Back', gift_templates_path %>
+</div>
