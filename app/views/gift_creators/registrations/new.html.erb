@@ -6,22 +6,38 @@
 <% end %>
 
 <h2>Sign up</h2>
-<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
-  <%= f.error_notification %>
-  <%= display_base_errors resource %>
-  <%= f.input :first_name, :required => true, :autofocus => true %>
-	<%= f.input :last_name, :required => true %>
-  <%= f.input :email, :required => true %>
-  <%= f.input :password, :required => true %>
-  <%= f.input :password_confirmation, :required => true %>
-	<%= f.input :credit_card_number, :required => true %>
-	<%= f.input :month, collection: 1..12, :required => true %>
-	<%= f.input :year, collection: Date.today.year..(Date.today.year + 12), :required => true %>
-	<%= f.input :cvv, :as => :string, :required => true %>
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => {:class => 'form-vertical' }) do |f| %>
+
+  <div><%= f.label :first_name %>
+  <%= f.text_field :first_name %></div>
+
+  <div><%= f.label :last_name %>
+  <%= f.text_field :last_name %></div>  
+
+	<div><%= f.label :email %>
+  <%= f.email_field :email %></div>
+
+  <div><%= f.label :password %>
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation %>
+  <%= f.password_field :password_confirmation %></div>
 	
+	<br />
+	<p><small>None of the information below will be stored,<br /> we just wan't to make sure that you are really<br />interested in making jevoudrais the best wish list in the world.</small></p>
+	
+	<div>Credit Card Number<br />
+  <%= text_field_tag :credit_card_number %></div>
 
+  <div>Month<br />
+  <%= select_tag(:month, options_for_select(1..12)) %></div>
 
+  <div>Year<br />
+  <%= select_tag(:year, options_for_select(Date.today.year..(Date.today.year + 12))) %></div>
 
-  <%= f.button :submit, 'Sign up', :class => 'btn-primary' %>
+	<div>CVV<br />
+  <%= text_field_tag :cvv %></div>
+
+  <%= f.submit 'Sign up', :class => 'btn btn-primary' %>
 <% end %>
 <%= render "devise/shared/links" %>

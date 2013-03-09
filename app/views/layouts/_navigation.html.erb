@@ -7,9 +7,16 @@
 	<% else %>
 		<p class="pull-right"><%= link_to 'Back', root_path, :'data-no-turbolink' => true %>&nbsp;&nbsp;</p>
 	<% end %>
+<% elsif gift_creator_signed_in? %>
+	<p class="pull-right">&nbsp;&nbsp;<%= link_to 'Logout', destroy_gift_creator_session_path, :method=>'delete' %></p>
 <% else %>
 	<% unless (params[:controller] == 'home' and params[:action] == 'new' ) %>
 		<p class="pull-right"><%= link_to 'Back', root_path, :'data-no-turbolink' => true %></p>
 	<% end %>
 <% end %>
+
+
+
+
+
 <br />

@@ -35,10 +35,6 @@ class DeviseCreateGiftCreators < ActiveRecord::Migration
 
       t.string :first_name
       t.string :last_name
-      t.string :credit_card_number
-      t.integer :month
-      t.integer :year
-      t.integer :cvv
 
       t.timestamps
     end

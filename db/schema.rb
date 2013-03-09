@@ -37,10 +37,6 @@ ActiveRecord::Schema.define(:version => 20130227092017) do
     t.string   "last_sign_in_ip"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "credit_card_number"
-    t.integer  "month"
-    t.integer  "year"
-    t.integer  "cvv"
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end
