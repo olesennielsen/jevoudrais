@@ -1,5 +1,5 @@
 <% if user_signed_in? %>
-  <p class="pull-right">&nbsp;&nbsp;<%= link_to 'Logout', destroy_user_session_path, :method=>'delete' %></p>
+  <p class="pull-right">&nbsp;&nbsp;<%= link_to 'Logout', users_sign_out_path, :method=>'delete' %></p>
 	<% if (params[:controller] == 'home' and params[:action] == 'index' ) %>
 		<% unless @notifications.empty? %>
 			<p id='notifications-link'><a href="#notificationModal" role="button" class="pull-right" data-toggle="modal"><%= @notifications.count %> notifications</a></p>

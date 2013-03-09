@@ -33,7 +33,8 @@ class DeviseCreateGiftCreators < ActiveRecord::Migration
       ## Token authenticatable
       # t.string :authentication_token
 
-      t.string :name
+      t.string :first_name
+      t.string :last_name
       t.string :credit_card_number
       t.integer :month
       t.integer :year
