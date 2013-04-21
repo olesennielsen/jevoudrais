@@ -15,36 +15,36 @@ class HomeController < ApplicationController
       users_string.collect! { |user| user.to_i }
       @users = User.where(:id => users_string)
     end
-    
+
     @own_events = current_user.events
-        
+
     @events = []
-    
+
     @users.each do |user|
       tmp_events = user.events
-      
+
       tmp_events.each do |event|
         @events.push(event)
       end
     end
-      
-    @events.sort_by! { |e| e.event_date }    
+
+    @events.sort_by! { |e| e.event_date }
   end
-  
+
   def new
-    
+
   end
-  
+
   def search
-    string = params[:term]    
+    string = params[:query]
     @templates = GiftTemplate.where('name LIKE ?', "%#{string}%")
-    
+
     @results = @templates.collect do |template|
-      { id: template.id, value: template.name, title: template.image_link }  
+      { id: template.id, name: template.name, photo: template.image_link }
     end
-    
+
     respond_to do |format|
       format.json { render json: @results }
     end
-  end  
+  end
 end

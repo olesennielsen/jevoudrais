@@ -14,19 +14,17 @@
 			<% end %>
 		</tbody>
 	</table>
-	
+
 	<div class="input-append">
 		<%= form_for Gift.new, :html => {:id => 'gift-form'},:remote => true do |f| %>
-		<%= f.hidden_field :user_id, :value => current_user.id %>
-		<%= f.hidden_field :gift_template_id, :id => 'hidden-gift-template' %>
-		<div class="ui-widget">			
-			<%= f.text_field :name, :id => "gift-name", :class => "input-large" %>	
+			<%= f.hidden_field :user_id, :value => current_user.id %>
+			<%= f.hidden_field :gift_template_id, :id => 'hidden-gift-template' %>
+			<%= f.text_field :name, :id => "gift-name", :class => "input-xlarge" %>
 			<%= f.submit 'Add gift', :class => 'btn', :id => 'submit-button' %>
-		</div>	
-		<% end %>			
+		<% end %>
 	</div>
-	<div id="error-text"></div>	
-	
+	<div id="error-text"></div>
+
 	<br /><br />
 	<h2>Your events</h2>
 	<table class="table">
@@ -42,9 +40,9 @@
 			<% end %>
 		</tbody>
 	</table>
-	
+
 	<a href="#eventModal" role="button" class="btn pull-right" data-toggle="modal">New event</a>
-	
+
 	<!-- Modal -->
 	<div id="eventModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 	  <div class="jevoudrais-table-header modal-header">
@@ -67,16 +65,16 @@
 					<p>Is the event recurring?&nbsp;</p>
 					<%= f.check_box :recurring %>
 				</div>
-				
-				
-				<%= f.hidden_field :user_id, :value => current_user.id %><br />			
+
+
+				<%= f.hidden_field :user_id, :value => current_user.id %><br />
 	  </div>
 	  <div class="modal-footer">
 	    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
 	    <%= f.submit 'Save event', :class => 'btn btn-primary' %>
 	  </div>
 		<% end %>
-	</div>		
+	</div>
 </div>
 
 <div class="span5 offset2 jevoudrais-table-header">
@@ -91,7 +89,7 @@
 				<td><%= event.event_date.strftime("%B %e") %></td>
 			</tr>
 			<% end %>
-		</tbody>			
+		</tbody>
 	</table>
 </div>
 

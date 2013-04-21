@@ -1,9 +1,9 @@
 class GiftCreators::RegistrationsController < Devise::RegistrationsController
 
   def create
-    
-    
-        
+
+
+
     # @credit_card = ActiveMerchant::Billing::CreditCard.new(
     # :first_name         => resource.first_name,
     # :last_name          => resource.last_name,
@@ -11,7 +11,7 @@ class GiftCreators::RegistrationsController < Devise::RegistrationsController
     # :month              => resource.month,
     # :year               => resource.year,
     # :verification_value => resource.cvv)
-    
+
     # copied from devise::registrationscontroller
     build_resource
 

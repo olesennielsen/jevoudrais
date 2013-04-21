@@ -75,13 +75,13 @@ class GiftsController < ApplicationController
   # DELETE /gifts/1.json
   def destroy
     @gift = Gift.find(params[:id])
-    
+
     if @gift.giver_id
       text = @gift.user.name + " removed " + @gift.name + " that you are giving"
       Notification.create!(:body => text, :user_id => @gift.giver_id)
-    end    
-    
-    @gift.destroy  
+    end
+
+    @gift.destroy
 
     respond_to do |format|
       format.html { redirect_to gifts_url }
@@ -89,22 +89,26 @@ class GiftsController < ApplicationController
       format.js
     end
   end
-  
+
   def give
     @gift = Gift.find(params[:id])
     @gift.update_attributes(:giver_id => current_user.id)
     @giver = User.get_giver(@gift.giver_id)
 
+    if @gift.gift_template_id
+      Click.create(:gift_template_id => @gift.gift_template_id)
+    end
+
     respond_to do |format|
       format.js
     end
   end
-  
+
   def get_giver
     @users = User.find(params[:id])
-    
+
     @name = { :name => @users.name }
-    
+
     respond_to do |format|
       format.json { render json: @name }
     end

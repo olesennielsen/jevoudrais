@@ -11,7 +11,15 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130227092017) do
+ActiveRecord::Schema.define(:version => 20130421121835) do
+
+  create_table "clicks", :force => true do |t|
+    t.integer  "gift_template_id"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  add_index "clicks", ["gift_template_id"], :name => "index_clicks_on_gift_template_id"
 
   create_table "events", :force => true do |t|
     t.string   "name"

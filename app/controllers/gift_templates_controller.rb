@@ -2,7 +2,7 @@ class GiftTemplatesController < ApplicationController
   # GET /gift_templates
   # GET /gift_templates.json
   def index
-    @gift_templates = GiftTemplate.all
+    @gift_templates = current_gift_creator.gift_templates
 
     respond_to do |format|
       format.html # index.html.erb
