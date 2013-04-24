@@ -126,7 +126,7 @@ Devise.setup do |config|
   # The time you want to timeout the user session without activity. After this
   # time the user will be asked for credentials again. Default is 30 minutes.
   # config.timeout_in = 30.minutes
-  
+
   # If true, expires auth token on session timeout.
   # config.expire_auth_token_on_timeout = false
 
@@ -207,10 +207,10 @@ Devise.setup do |config|
   # Add a new OmniAuth provider. Check the wiki for more information on setting
   # up on your models and hooks.
   # config.omniauth :github, 'APP_ID', 'APP_SECRET', :scope => 'user,public_repo'
-  config.omniauth :facebook, '318746834891563', '7bb16a63ff9146e283eb14da7b71f4f6', :strategy_class => OmniAuth::Strategies::Facebook,
+  config.omniauth :facebook, '131847880309441', '5e26f199ec681f0df44a26c28eef1acb', :strategy_class => OmniAuth::Strategies::Facebook,
     :scope => 'email,user_birthday', :display=>'popup'
-  
-  
+
+
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
   # change the failure app, you can configure them inside the config.warden block.
