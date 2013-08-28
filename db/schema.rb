@@ -52,6 +52,13 @@ ActiveRecord::Schema.define(:version => 20130421121835) do
   add_index "gift_creators", ["email"], :name => "index_gift_creators_on_email", :unique => true
   add_index "gift_creators", ["reset_password_token"], :name => "index_gift_creators_on_reset_password_token", :unique => true
 
+  create_table "gift_creators_roles", :id => false, :force => true do |t|
+    t.integer "gift_creator_id"
+    t.integer "role_id"
+  end
+
+  add_index "gift_creators_roles", ["gift_creator_id", "role_id"], :name => "index_gift_creators_roles_on_gift_creator_id_and_role_id"
+
   create_table "gift_templates", :force => true do |t|
     t.string   "name"
     t.string   "image_link"
