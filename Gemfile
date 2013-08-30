@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
-gem 'rails', '3.2.13'
+ruby '2.0.0'
 
-group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
-  gem 'coffee-rails', '~> 3.2.1'
-  gem 'uglifier', '>= 1.0.3'
-end
+gem 'rails', '4.0.0'
+gem 'activeresource', :require => 'active_resource'
+gem 'protected_attributes'
+
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'uglifier'
 
 group :development, :test do
   gem 'sqlite3'
@@ -18,23 +20,23 @@ end
 gem 'fb_graph'
 gem 'turbolinks'
 gem 'jquery-rails'
-gem "thin", ">= 1.5.0"
-gem "rspec-rails", ">= 2.11.4", :group => [:development, :test]
-gem "database_cleaner", ">= 0.9.1", :group => :test
-gem "email_spec", ">= 1.4.0", :group => :test
-gem "cucumber-rails", ">= 1.3.0", :group => :test, :require => false
-gem "launchy", ">= 2.1.2", :group => :test
-gem "capybara", ">= 2.0.1", :group => :test
-gem "factory_girl_rails", ">= 4.1.0", :group => [:development, :test]
-gem "bootstrap-sass", ">= 2.2.2.0"
-gem "devise", ">= 2.1.2"
-gem "cancan", ">= 1.6.8"
-gem "rolify", ">= 3.2.0"
-gem "simple_form", ">= 2.0.4"
-gem "quiet_assets", ">= 1.0.1", :group => :development
-gem "figaro", ">= 0.5.0"
-gem "better_errors", ">= 0.3.2", :group => :development
-gem "binding_of_caller", ">= 0.6.8", :group => :development
+gem "thin"
+gem "rspec-rails", :group => [:development, :test]
+gem "database_cleaner", :group => :test
+gem "email_spec", :group => :test
+gem "cucumber-rails", :group => :test, :require => false
+gem "launchy", :group => :test
+gem "capybara", :group => :test
+gem "factory_girl_rails", :group => [:development, :test]
+gem "bootstrap-sass"
+gem "devise"
+gem "cancan"
+gem "rolify"
+gem 'simple_form', :git => 'git://github.com/plataformatec/simple_form.git'
+gem "quiet_assets", :group => :development
+gem "figaro"
+gem "better_errors", :group => :development
+gem "binding_of_caller", :group => :development
 gem "omniauth"
 gem "omniauth-facebook"
 gem 'activemerchant'

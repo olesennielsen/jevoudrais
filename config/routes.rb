@@ -22,12 +22,8 @@ Jevoudrais::Application.routes.draw do
   end
 
   authenticated :user do
-    root :to => 'home#index'
+    root :to => 'home#index', as: 'logged_in'
   end
 
-  authenticated :gift_creator do
-    root :to => 'gift_templates#index'
-  end
-
-  root :to => "home#new"
+  root :to => 'home#new', as: 'root'
 end

@@ -12,7 +12,8 @@ Jevoudrais::Application.configure do
   config.static_cache_control = "public, max-age=3600"
 
   # Log error messages when you accidentally call methods on nil
-  config.whiny_nils = true
+  #config.whiny_nils = true
+  config.eager_load = false
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -34,7 +35,7 @@ Jevoudrais::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
-  
+
   # ActionMailer Config
   config.action_mailer.default_url_options = { :host => 'example.com' }
 
